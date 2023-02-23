@@ -23,18 +23,25 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
     y: 0,
   };
 
-  // Using conditionals to define the overloaded function from different parameter type 
+
+  // Conditional Types
+  // Using conditionals to define the overloaded function from different input parameter type 
+
+  //If the argument is of string type
   if (typeof arg1 === "string") {
     (arg1).split(",").forEach(str => {
         const [key, value] = str.split(":")
         coord[key as 'x' | 'y'] = parseFloat(value)
     })
         }
+        //If the argument is of object type
   else if (typeof arg1 === "object") {
     coord = {
       ...(arg1 as Coordinate),
     };
-  } else {
+  } 
+  //If the argument is of number type
+  else {
     coord = {
       x: arg1 as number,
       y: arg2 as number,
