@@ -12,6 +12,8 @@ function parseCoordinateFromObject(obj: Coordinate): Coordinate {
 function parseCoordinateFromNumbers(x: number, y: number): Coordinate {
   return { x, y };
 }
+
+// 
 function parseCoordinate(str:string):Coordinate
 function parseCoordinate(obj: Coordinate): Coordinate;
 function parseCoordinate(x: number, y: number): Coordinate;
@@ -21,6 +23,7 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
     y: 0,
   };
 
+  // Using conditionals to define the overloaded function from different parameter type 
   if (typeof arg1 === "string") {
     (arg1).split(",").forEach(str => {
         const [key, value] = str.split(":")
@@ -40,7 +43,7 @@ function parseCoordinate(arg1: unknown, arg2?: unknown): Coordinate {
 
   return coord;
 }
-
+// testing the overloaded function with different parameter
 console.log(parseCoordinate(10, 30))
 console.log(parseCoordinate({x:43, y:8}))
 console.log(parseCoordinate("x:21,y:45"))
